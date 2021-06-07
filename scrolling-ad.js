@@ -1,15 +1,13 @@
 startUserAtPageTop();
 
 // Calculating and setting styleSheet values based on browser window and creative height
-// The height of each element needs to be determined by the width of the device
 let numberOfSlots = 3;
 let viewportWidth = window.innerWidth;
-let creativeWidth = 375;
-let creativeHeight = 50; // height of each piece of creative
+let creativeWidth = 375; // Each slot has creative of equal dimensions
+let creativeHeight = 50; 
 let adHeight = creativeHeight * numberOfSlots;
 let creativeSizeAdjustmentScale = viewportWidth / creativeWidth;
 let requiredSlotHeight = (creativeHeight * creativeSizeAdjustmentScale).toFixed(1);
-console.log(`Required Slot Height: ${requiredSlotHeight}`);
 
 document.documentElement.style.setProperty('--ad-slot-height', `${requiredSlotHeight * numberOfSlots}px`);
 document.documentElement.style.setProperty('--canvas-height', `${(requiredSlotHeight * numberOfSlots) * numberOfSlots}px`);
@@ -18,7 +16,7 @@ document.documentElement.style.setProperty('--slot-one-height', `${requiredSlotH
 document.documentElement.style.setProperty('--slot-two-height', `${requiredSlotHeight}px`);
 document.documentElement.style.setProperty('--slot-three-height', `${requiredSlotHeight}px`);
 
-// TODO - refactor the below to be more dynamic and just better
+// The below should be more dynamic and... just better
 document.documentElement.style.setProperty('--slot-one-y-axis', `${requiredSlotHeight * 1}px`);
 document.documentElement.style.setProperty('--slot-two-y-axis', `${requiredSlotHeight  * 3}px`);
 document.documentElement.style.setProperty('--slot-three-y-axis', `${requiredSlotHeight  * 5}px`);
@@ -53,22 +51,15 @@ let slotThreeBlurStartPoint = getComputedStyle(document.documentElement).getProp
 let animationCompleted = false; // Flag for cancelling further animation once completed
 
 let distanceToBottomOfAdContainer = getDistanceToBottomOfAdSlot()
-
-console.log(distanceToBottomOfAdContainer);
+let extraAdElement = document.getElementById('extra-ad-element');
 
 window.addEventListener('scroll', function (event) {  
-    // Should tidy up below. Being calculated too often to account for changes in height in mobile browsers 
-    distanceToBottomOfAdContainer = getDistanceToBottomOfAdSlot();
-    // The ad is raised up after the user starts to scroll
-    adSlot.classList.add('raise-ad')
-    let stickyAdElement = document.getElementById('sticky-ad-element');
-    stickyAdElement.classList.add('glow-enter');
+    distanceToBottomOfAdContainer = getDistanceToBottomOfAdSlot(); // Calculated too often to account for changes in height in mobile browsers 
+    
+    adSlot.classList.add('raise-ad') // The ad is raised up after the user starts to scroll
 
-    // Once the adSlot is in view it will stick to the bottom of the screen during animation
-    if (isInViewport(adSlot)) {
-        adSlot.classList.add('sticky-bottom');
-    }
-   
+    if (isInViewport(adSlot)) adSlot.classList.add('sticky-bottom');  // Once the adSlot is in view it will stick to the bottom of the screen during animation
+
     // Keeping track of the distance from the top of page, so we can set the scroll of the ad-unit
     let distanceFromTopOfPage = window.pageYOffset
    
@@ -77,10 +68,7 @@ window.addEventListener('scroll', function (event) {
 
         // Controlling the scroll in the adSlot based on users scroll in the content
         let scrollTopOverridePosition = adSlotScrollableHeight * percentScrolledFromPageTopToAdUnitBottom;
-
-        if (animationCompleted === false){
-            adSlot.scrollTop = scrollTopOverridePosition;
-        }
+        if (animationCompleted === false) adSlot.scrollTop = scrollTopOverridePosition;
         
     } else {
         // The user's scroll has reached the adSlots place in the page, so the adSlot is returned there and remains static
@@ -92,18 +80,14 @@ window.addEventListener('scroll', function (event) {
     if (distanceFromTopOfPage > distanceToBottomOfAdContainer){
         animationCompleted = true;
     }
-
 }, false);
 
 let lastScrollPercent;
-
 adSlot.addEventListener('scroll', function (e) {
-  
     if (adSlot.scrollTop === adSlotScrollableHeight) animationCompleted = true;
     if (animationCompleted === true) lockScroll(adSlot, adSlotScrollableHeight);
     let scrollPercent = (adSlot.scrollTop/adSlotScrollableHeight)*100;
 
-    // Getting and setting style variable properties: https://davidwalsh.name/css-variables-javascript
     if (scrollPercent < 16.66){
         let slotOneInvertedInnerScrollPercent = 1 - (scrollPercent / 16.66);
     
@@ -116,8 +100,7 @@ adSlot.addEventListener('scroll', function (e) {
         document.documentElement.style.setProperty('--slot-one-blur', `${newSlotOneBlur}px`);
     
     } else if (scrollPercent >= 16.66 && scrollPercent <= 50){
-        // Creative 'slotOne' should be stuck in place at this point
-        slotOne.classList.add('sticky-one');
+        slotOne.classList.add('sticky-one'); // Creative 'slotOne' should be stuck in place at this point
         document.documentElement.style.setProperty('--slot-one-x-axis', `0px`);
         document.documentElement.style.setProperty('--slot-one-z-axis', `0px`);
         document.documentElement.style.setProperty('--slot-one-blur', `0px`);
@@ -133,7 +116,7 @@ adSlot.addEventListener('scroll', function (e) {
         document.documentElement.style.setProperty('--slot-two-blur', `${newSlotTwoBlur}px`);
         
     } else if (scrollPercent > 50 && scrollPercent <= 83.33){
-        slotTwo.classList.add('sticky-two');
+        slotTwo.classList.add('sticky-two'); // Creative 'slotTwo' should be stuck in place at this point
         document.documentElement.style.setProperty('--slot-two-x-axis', `0px`);
         document.documentElement.style.setProperty('--slot-two-z-axis', `0px`);
         document.documentElement.style.setProperty('--slot-two-blur', `0px`);
@@ -149,16 +132,12 @@ adSlot.addEventListener('scroll', function (e) {
         document.documentElement.style.setProperty('--slot-three-blur', `${newslotThreeBlur}px`);
 
     } else if (scrollPercent > 83.33){
-        slotThree.classList.add('sticky-three');
+        slotThree.classList.add('sticky-three'); // Creative 'slotThree' should be stuck in place at this point
+        extraAdElement.classList.add('glow-enter');
         document.documentElement.style.setProperty('--slot-three-x-axis', `0px`);
         document.documentElement.style.setProperty('--slot-three-z-axis', `0px`);
         document.documentElement.style.setProperty('--slot-three-blur', `0px`);
-        // animationCompleted = true;
-
-    } else if (scrollPercent < 16.66 && scrollPercent < lastScrollPercent) {
-        slotOne.classList.remove('sticky-one');
-    }
-
+    } 
     lastScrollPercent = scrollPercent;
 }, false)
 
@@ -166,7 +145,6 @@ adSlot.addEventListener('scroll', function (e) {
 /** Helper Functions **/ 
 // Bumping a user back to the top of the page on page refresh
 function startUserAtPageTop(){
-    // https://www.designcise.com/web/tutorial/how-to-force-scroll-to-the-top-of-the-page-on-page-reload-using-javascript
     if (history.scrollRestoration) {
         history.scrollRestoration = 'manual';
     } else {
@@ -178,7 +156,6 @@ function startUserAtPageTop(){
 
 // Checks if an elemnt is completely in the viewport
 function isInViewport (element) {
-    // https://gomakethings.com/how-to-test-if-an-element-is-in-the-viewport-with-vanilla-javascript/
     let bounding = element.getBoundingClientRect();
     return (
         bounding.top >= 0 &&
@@ -192,7 +169,6 @@ function isInViewport (element) {
 function getDistanceToBottomOfAdSlot(){
     // When the page loads, detect the scroll position between the top and the end of the ad unit, 
     // which is the point the ad unit should return to its normal flow in the article
-    // https://stackoverflow.com/questions/11805955/how-to-get-the-distance-from-the-top-for-an-element
     let adContainer = document.getElementById('ad-container');
     let adContainerDistanceToTop = window.pageYOffset + adContainer.getBoundingClientRect().top
     let intViewportHeight = window.innerHeight;
@@ -202,6 +178,5 @@ function getDistanceToBottomOfAdSlot(){
 
 // Prevents the user from scrolling within the adSlot element. Used after the animation has been completed
 function lockScroll(element, height) {
-    // https://davidwells.io/snippets/disable-scrolling-with-javascript
     element.scrollTo(0, height);
 }

@@ -1,37 +1,37 @@
 :root {
-    --ad-slot-height: 300px; 
-    --canvas-height: 900px;
-    /* creative slot one */
-    --slot-one-height: 100px;
-    --slot-one-x-axis: -200px;
-    --slot-one-y-axis: 100px;
-    --slot-one-z-axis: 150px;
-    --slot-one-blur: 6px;
-    /* creative slot two */
-    --slot-two-height: 100px;
-    --slot-two-x-axis: -200px;
-    --slot-two-y-axis: 300px;
-    --slot-two-z-axis: 400px;
-    --slot-two-blur: 10px;
-    /* creative slot three */
-    --slot-three-height: 100px;
-    --slot-three-x-axis: 100px;
-    --slot-three-y-axis: 500px;
-    --slot-three-z-axis: 350px;
-    --slot-three-blur: 8px;
+  --ad-slot-height: 300px;
+  --canvas-height: 900px;
+  /* creative slot one */
+  --slot-one-height: 100px;
+  --slot-one-x-axis: -200px;
+  --slot-one-y-axis: 100px;
+  --slot-one-z-axis: 150px;
+  --slot-one-blur: 6px;
+  /* creative slot two */
+  --slot-two-height: 100px;
+  --slot-two-x-axis: -200px;
+  --slot-two-y-axis: 300px;
+  --slot-two-z-axis: 400px;
+  --slot-two-blur: 10px;
+  /* creative slot three */
+  --slot-three-height: 100px;
+  --slot-three-x-axis: 100px;
+  --slot-three-y-axis: 500px;
+  --slot-three-z-axis: 350px;
+  --slot-three-blur: 8px;
 }
 
 body {
-    font-family: 'Verdana', sans-serif;
-    margin: 0px 0px;
+  font-family: "Verdana", sans-serif;
+  margin: 0px 0px;
 }
 
 .article-headline {
-    margin: 20px 20px;
+  margin: 20px 20px;
 }
 
 .article-text {
-    margin: 20px 20px;
+  margin: 20px 20px;
 }
 
 .sticky-bottom {
@@ -43,154 +43,146 @@ body {
   bottom: 0px;
 }
 
-
-#ad-container{
-    width: 100%;
-    height: var(--ad-slot-height);
+#ad-container {
+  width: 100%;
+  height: var(--ad-slot-height);
 }
 
 .ad-slot {
-    /* background-image: url(assets/fitbit-product.png); */
-    width: 100%;
-    height: var(--ad-slot-height);
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: fixed;
-    top: 100vh;
-  }
-
-  .raise-ad {
-    animation: raise-ad 1s linear forwards;
-  }
-
-  @keyframes raise-ad {
-      from {
-        transform: translateY(0px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(calc(-1 * var(--ad-slot-height)));
-        opacity: 1;
-      }
-  }
-
-
-.canvas { 
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgb(199, 199, 199) 100%);
-    position: relative;
-    border: none;
-    perspective: 300px; 
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: var(--canvas-height);
-  }
-
-  #sticky-ad-element {
-      position: relative; 
-      top: 150px;
-      right: 0px;
-      transform: translateX(200px);
-      filter: drop-shadow(20px 20px 30px #333);
-  }
-
-  @keyframes enter {
-    from {
-        transform: translateX(200px);
-    }
-    to {
-        transform: translateX(0px);
-    }
+  width: 100%;
+  height: var(--ad-slot-height);
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 100vh;
 }
 
-  .glow-enter {
-      animation: glow 5s forwards, enter 1s forwards;
-  }
+.raise-ad {
+  animation: raise-ad 1s linear forwards;
+}
 
-  @keyframes glow {
-      from {
-        filter: drop-shadow(0px 0px 0px #fff);
-      }
-      to {
-        filter: drop-shadow(20px 20px 30px #333);  
-      }
+@keyframes raise-ad {
+  from {
+    transform: translateY(0px);
+    opacity: 0;
   }
+  to {
+    transform: translateY(calc(-1 * var(--ad-slot-height)));
+    opacity: 1;
+  }
+}
 
-  .sticky-one {
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -o-sticky;
-    position: -ms-sticky;
-    position: sticky; 
-    top: calc((var(--ad-slot-height)/3)*-1);
-  }
+.canvas {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgb(199, 199, 199) 100%
+  );
+  position: relative;
+  border: none;
+  perspective: 300px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: var(--canvas-height);
+}
 
-  .sticky-two {
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -o-sticky;
-    position: -ms-sticky;
-    position: sticky;
-    top: calc((var(--ad-slot-height)/3)*-2); 
-  }
+#extra-ad-element {
+  width: 100%;
+  position: relative;
+  top: 150px;
+  right: 0px;
+  transform: translateX(200px);
+  filter: drop-shadow(-20px 20px 30px #333);
+}
 
-  .sticky-three {
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -o-sticky;
-    position: -ms-sticky;
-    position: sticky;
-    top: calc((var(--ad-slot-height)/3)*-3);
+@keyframes enter {
+  from {
+    transform: translateX(200px);
   }
+  to {
+    transform: translateX(0px);
+  }
+}
 
-  #slot-one {
-    height: var(--slot-one-height);
-    transform: 
-        translateY(var(--slot-one-y-axis)) 
-        translateX(var(--slot-one-x-axis)) 
-        translateZ(var(--slot-one-z-axis));
-    filter: 
-        blur(var(--slot-one-blur));
-  }
+.glow-enter {
+  animation: glow 5s forwards, enter 1s forwards;
+}
 
-  #slot-one .slot-image {
-      height: var(--slot-one-height)
+@keyframes glow {
+  from {
+    filter: drop-shadow(0px 0px 0px #fff);
   }
+  to {
+    filter: drop-shadow(-20px 20px 30px #333);
+  }
+}
 
-  #slot-two {
-    height: var(--slot-two-height);
-    transform: 
-        translateY(var(--slot-two-y-axis)) 
-        translateX(var(--slot-two-x-axis))
-        translateZ(var(--slot-two-z-axis));
-    filter: 
-        blur(var(--slot-two-blur));
-  }
+.sticky-one {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: calc((var(--ad-slot-height) / 3) * -1);
+}
 
-  #slot-two img {
-    height: var(--slot-two-height);
-  }
+.sticky-two {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: calc((var(--ad-slot-height) / 3) * -2);
+}
 
-  #slot-three {
-    height: var(--slot-three-height);
-    transform: 
-        translateY(var(--slot-three-y-axis)) 
-        translateX(var(--slot-three-x-axis))
-        translateZ(var(--slot-three-z-axis));
-    filter: 
-        blur(var(--slot-three-blur));
-  }
+.sticky-three {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: calc((var(--ad-slot-height) / 3) * -3);
+}
 
-  #slot-three img {
-    height: var(--slot-three-height);
-  }
-  
+#slot-one {
+  height: var(--slot-one-height);
+  transform: translateY(var(--slot-one-y-axis))
+    translateX(var(--slot-one-x-axis)) translateZ(var(--slot-one-z-axis));
+  filter: blur(var(--slot-one-blur));
+}
+
+#slot-one .slot-image {
+  height: var(--slot-one-height);
+}
+
+#slot-two {
+  height: var(--slot-two-height);
+  transform: translateY(var(--slot-two-y-axis))
+    translateX(var(--slot-two-x-axis)) translateZ(var(--slot-two-z-axis));
+  filter: blur(var(--slot-two-blur));
+}
+
+#slot-two img {
+  height: var(--slot-two-height);
+}
+
+#slot-three {
+  height: var(--slot-three-height);
+  transform: translateY(var(--slot-three-y-axis))
+    translateX(var(--slot-three-x-axis)) translateZ(var(--slot-three-z-axis));
+  filter: blur(var(--slot-three-blur));
+}
+
+#slot-three img {
+  height: var(--slot-three-height);
+}
+
 #pixel {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    object-fit: fill;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
 }
-

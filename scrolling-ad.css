@@ -66,7 +66,7 @@ body {
 }
 
 .raise-ad {
-  animation: raise-ad 1s linear forwards;
+  animation: raise-ad 0.3s ease-out forwards;
 }
 
 @keyframes raise-ad {

@@ -57,8 +57,8 @@ let distanceToBottomOfAdContainer = getDistanceToBottomOfAdSlot()
 window.addEventListener('scroll', function (event) {   
     // The ad is raised up after the user starts to scroll
     adSlot.classList.add('raise-ad')
-    let stickyAdElement = document.getElementById('sticky-ad-element');
-    stickyAdElement.classList.add('glow-enter');
+    // let stickyAdElement = document.getElementById('sticky-ad-element');
+    // stickyAdElement.classList.add('glow-enter');
 
     // Once the adSlot is in view it will stick to the bottom of the screen during animation
     if (isInViewport(adSlot)) {

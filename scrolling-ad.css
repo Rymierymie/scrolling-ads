@@ -26,7 +26,6 @@ body {
     margin: 0px 0px;
 }
 
-
 .article-headline {
     margin: 20px 20px;
 }
@@ -36,8 +35,12 @@ body {
 }
 
 .sticky-bottom {
-    position: sticky;
-    bottom: 0px;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  bottom: 0px;
 }
 
 
@@ -47,6 +50,7 @@ body {
 }
 
 .ad-slot {
+    /* background-image: url(assets/fitbit-product.png); */
     width: 100%;
     height: var(--ad-slot-height);
     overflow-x: hidden;
@@ -75,7 +79,7 @@ body {
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgb(199, 199, 199) 100%);
     position: relative;
-    border:none;
+    border: none;
     perspective: 300px; 
     top: 0;
     right: 0;
@@ -86,6 +90,9 @@ body {
 
   #sticky-ad-element {
       position: -webkit-sticky;
+      position: -moz-sticky;
+      position: -o-sticky;
+      position: -ms-sticky;
       position: sticky; 
       bottom: 0px;
       transform: translateX(200px);
@@ -115,18 +122,30 @@ body {
   }
 
   .sticky-one {
-      position: sticky;
-      top: calc((var(--ad-slot-height)/3)*-1);
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -o-sticky;
+    position: -ms-sticky;
+    position: sticky; 
+    top: calc((var(--ad-slot-height)/3)*-1);
   }
 
   .sticky-two {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -o-sticky;
+    position: -ms-sticky;
     position: sticky;
     top: calc((var(--ad-slot-height)/3)*-2); 
   }
 
   .sticky-three {
-      position: sticky;
-      top: calc((var(--ad-slot-height)/3)*-3);
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -o-sticky;
+    position: -ms-sticky;
+    position: sticky;
+    top: calc((var(--ad-slot-height)/3)*-3);
   }
 
   #slot-one {

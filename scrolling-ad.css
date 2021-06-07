@@ -89,12 +89,8 @@ body {
   }
 
   #sticky-ad-element {
-      position: -webkit-sticky;
-      position: -moz-sticky;
-      position: -o-sticky;
-      position: -ms-sticky;
-      position: sticky; 
-      bottom: 0px;
+      position: relative; 
+      top: 150px;
       transform: translateX(200px);
       filter: drop-shadow(20px 20px 30px #333);
   }
@@ -158,7 +154,7 @@ body {
         blur(var(--slot-one-blur));
   }
 
-  #slot-one img {
+  #slot-one .slot-image {
       height: var(--slot-one-height)
   }
 

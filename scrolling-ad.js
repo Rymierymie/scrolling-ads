@@ -54,11 +54,15 @@ let animationCompleted = false; // Flag for cancelling further animation once co
 
 let distanceToBottomOfAdContainer = getDistanceToBottomOfAdSlot()
 
-window.addEventListener('scroll', function (event) {   
+console.log(distanceToBottomOfAdContainer);
+
+window.addEventListener('scroll', function (event) {  
+    // Should tidy up below. Being calculated too often to account for changes in height in mobile browsers 
+    distanceToBottomOfAdContainer = getDistanceToBottomOfAdSlot();
     // The ad is raised up after the user starts to scroll
     adSlot.classList.add('raise-ad')
-    // let stickyAdElement = document.getElementById('sticky-ad-element');
-    // stickyAdElement.classList.add('glow-enter');
+    let stickyAdElement = document.getElementById('sticky-ad-element');
+    stickyAdElement.classList.add('glow-enter');
 
     // Once the adSlot is in view it will stick to the bottom of the screen during animation
     if (isInViewport(adSlot)) {

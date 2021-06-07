@@ -1,6 +1,7 @@
 :root {
   --ad-slot-height: 300px;
   --canvas-height: 900px;
+  --ad-slot-max-width: 415px;
   /* creative slot one */
   --slot-one-height: 100px;
   --slot-one-x-axis: -200px;
@@ -19,6 +20,11 @@
   --slot-three-y-axis: 500px;
   --slot-three-z-axis: 350px;
   --slot-three-blur: 8px;
+}
+
+html {
+  margin: 0 auto;
+  max-width: var(--ad-slot-max-width);
 }
 
 body {
@@ -45,11 +51,13 @@ body {
 
 #ad-container {
   width: 100%;
+  max-width: var(--ad-slot-max-width);
   height: var(--ad-slot-height);
 }
 
 .ad-slot {
   width: 100%;
+  max-width: var(--ad-slot-max-width);
   height: var(--ad-slot-height);
   overflow-x: hidden;
   overflow-y: auto;

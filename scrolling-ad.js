@@ -3,6 +3,7 @@ startUserAtPageTop();
 // Calculating and setting styleSheet values based on browser window and creative height
 let numberOfSlots = 3;
 let viewportWidth = window.innerWidth;
+if (viewportWidth > 415) viewportWidth = 415;
 let creativeWidth = 375; // Each slot has creative of equal dimensions
 let creativeHeight = 50; 
 let adHeight = creativeHeight * numberOfSlots;

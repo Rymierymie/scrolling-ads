@@ -91,6 +91,7 @@ body {
   #sticky-ad-element {
       position: relative; 
       top: 150px;
+      right: 0px;
       transform: translateX(200px);
       filter: drop-shadow(20px 20px 30px #333);
   }

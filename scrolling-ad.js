@@ -153,7 +153,7 @@ adSlot.addEventListener('scroll', function (e) {
         document.documentElement.style.setProperty('--slot-three-x-axis', `0px`);
         document.documentElement.style.setProperty('--slot-three-z-axis', `0px`);
         document.documentElement.style.setProperty('--slot-three-blur', `0px`);
-        animationCompleted = true;
+        // animationCompleted = true;
 
     } else if (scrollPercent < 16.66 && scrollPercent < lastScrollPercent) {
         slotOne.classList.remove('sticky-one');
